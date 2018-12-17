@@ -1,0 +1,21 @@
+{% extends 'proStageTemplate.html.twig' %}
+
+
+{% block body %}
+<h1>Cette page affichera le stage {{identifiant}}</h1>
+<h3></h3>
+</br>
+{% endblock %}
+
+{% block footer %} 
+</br></br></br></br>
+<table class="table table-striped">
+  <thead class="thead-dark" >
+    <tr>
+      <th scope="col"><a href="/stage/{{identifiant+1}}">Acceeder au stage suivant</a> </th>
+      <th scope="col"><a href="/">Retour à l'acueil</a></th>
+    </tr>
+  </thead>
+  </table>
+
+{% endblock %}
