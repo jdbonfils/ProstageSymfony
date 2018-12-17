@@ -14,6 +14,15 @@ class AppFixtures extends Fixture
 		//Création d'un générateur de données faker
 		
 		$faker = \Faker\Factory::create('fr_FR') ;
+		$stage1 = new Stage() ;
+		$stage2 = new Stage() ;
+		$stage3 = new Stage() ;
+	    $stage4 = new Stage() ;
+		$stage5 = new Stage() ;
+		$Safran = new Entreprise();
+		$Ubisoft = new Entreprise();
+		$Bizi = new Entreprise();
+		$ScopeBidegorry = new Entreprise();
 		
          $DutInformatique = new Formation();
 		 $DutInformatique->setNom("DutInformatique") ;
@@ -37,47 +46,47 @@ class AppFixtures extends Fixture
 		  
 		  
 		  
-		 $stage1 = new Stage() ;
+
 		 $stage1-> setTitre("Developpement d'un sharepoint") ;
-		 $stage1-> setDescription(faker->realText($maxNbChars = 100, $indexSize = 2)) ;
-	   	 $stage1-> setContact(faker->email());
+		 $stage1-> setDescription($faker->realText($maxNbChars = 90, $indexSize = 2)) ;
+	   	 $stage1-> setContact($faker->email());
 		 $stage1-> addFormation($DutInformatique) ;
 		 $stage1-> setEntreprise($Safran) ;
 		 $manager->persist($stage1);
 
 
-		 $stage2 = new Stage() ;
+
 		 $stage2-> setTitre("Developpement d'un jeux video") ;
-		 $stage2-> setDescription(faker->realText($maxNbChars = 100, $indexSize = 2)) ;
-	   	 $stage2-> setContact(faker->email());
+		 $stage2-> setDescription($faker->realText($maxNbChars = 100, $indexSize = 2)) ;
+	   	 $stage2-> setContact($faker->email());
 		 $stage2-> addFormation($LpMultimedia) ;
 		 $stage2-> setEntreprise($Ubisoft) ;
 		 $manager->persist($stage2);
 
 
-		 $stage3 = new Stage() ;
+
 		 $stage3-> setTitre("Creation d'un site web eco responsable") ;
-		 $stage3-> setDescription(faker->realText($maxNbChars = 100, $indexSize = 2)) ;
-	   	 $stage3-> setContact(faker->email());
+		 $stage3-> setDescription($faker->realText($maxNbChars = 100, $indexSize = 2)) ;
+	   	 $stage3-> setContact($faker->email());
 		 $stage3-> addFormation($DuTic) ;
 		 $stage3-> setEntreprise($Bizi) ;
 		 $manager->persist($stage3);
 
 
-		 $stage4 = new Stage() ;
+
 		 $stage4-> setTitre("Mettre à jour un site web et une BD") ;
-		 $stage4-> setDescription(faker->realText($maxNbChars = 100, $indexSize = 2)) ;
-	   	 $stage4-> setContact(faker->email());
+		 $stage4-> setDescription($faker->realText($maxNbChars = 100, $indexSize = 2)) ;
+	   	 $stage4-> setContact($faker->email());
 		 $stage4-> addFormation($DutInformatique) ;
 		 $stage4-> setEntreprise($ScopeBidegorry) ;
 		 $manager->persist($stage4);
 
 
 
-		 $stage5 = new Stage() ;
+
 		 $stage5-> setTitre("Developpement d'une application") ;
-		 $stage5-> setDescription(faker->realText($maxNbChars = 100, $indexSize = 2)) ;
-	   	 $stage5-> setContact(faker->email());
+		 $stage5-> setDescription($faker->realText($maxNbChars = 100, $indexSize = 2)) ;
+	   	 $stage5-> setContact($faker->email());
 		 $stage5-> addFormation($DuTic) ;
 		 $stage5-> setEntreprise($Safran) ;
 		 $manager->persist($stage5);
@@ -87,36 +96,36 @@ class AppFixtures extends Fixture
 
 
 
-		 $Safran = new Entreprise();
+
 		 $Safran->setNom("Safran") ;
-		 $Safran->setActivite(faker->bs()) ;
-		 $Safran->setAdresse(faker->address());
+		 $Safran->setActivite("Aéronautique") ;
+		 $Safran->setAdresse($faker->address());
 		 $Safran->addStage($stage1) ;
 		 $Safran->addStage($stage5) ;
 		  $manager->persist($Safran);
 
 
 
-		 $Ubisoft = new Entreprise();
+
 		 $Ubisoft->setNom("Ubisoft") ;
-		 $Ubisoft->setActivite(faker->bs()) ;
-		 $Ubisoft->setAdresse(faker->address());
+		 $Ubisoft->setActivite("Studio jeu video") ;
+		 $Ubisoft->setAdresse($faker->address());
 		 $Ubisoft->addStage($stage2);
 		 $manager->persist($Ubisoft);
 
 
-		 $Bizi = new Entreprise();
+		
 		 $Bizi->setNom("Bizi") ;
-		 $Bizi->setActivite(faker->bs()) ;
-		 $Bizi->setAdresse(faker->address());
+		 $Bizi->setActivite("Association") ;
+		 $Bizi->setAdresse($faker->address());
 		 $Bizi->addStage($stage3);
 		 $manager->persist($Bizi);
 
 
-		 $ScopeBidegorry = new Entreprise();
+
 		 $ScopeBidegorry->setNom("ScopeBidegorry") ;
-		 $ScopeBidegorry->setActivite(faker->bs()) ;
-		 $ScopeBidegorry->setAdresse(faker->address());
+		 $ScopeBidegorry->setActivite("ESN") ;
+		 $ScopeBidegorry->setAdresse($faker->address());
 		 $ScopeBidegorry->addStage($stage4);
 		 $manager->persist($ScopeBidegorry);
 
