@@ -3,6 +3,7 @@
 
 {% block body %}
 <h1>Voici la liste des stages proposé par :  {{entreprise.nom}}</h1>
+<br>
 
 <table class="table table-striped">
 	<thead class="thead-dark" >
@@ -11,12 +12,16 @@
 		</tr>
   	</thead>
   	<tbody>
-	<ul class="list-group">
-		{% for stage in stagesE %}
- 			<li class="list-group-item">Stage : {{stage.titre}}</li>
-		{% endfor %}
-	</ul>
+  		{% for stage in stagesE %}
+	<tr>
+		
+ 			<td>Stage : {{stage.titre}}</td>
+		
+	</tr>
+	{% endfor %}
+
 	</tbody>
 </table>
 
 {% endblock %}
+{% block footer %}{% endblock %}
