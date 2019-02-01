@@ -1,0 +1,34 @@
+{% extends 'proStageTemplate.html.twig' %}
+
+{% block title %}Stage: {{stage.titre}}</title>{% endblock %}
+
+{% block body %}
+
+<ul class="list-group">
+  <li class="list-group-item">Titre : {{stage.titre}}</li>
+  <li class="list-group-item">Description : {{stage.description}}</li>
+  <li class="list-group-item">Contact : {{stage.contact}}</li>
+	
+  <li class="list-group-item">Entreprise : {{stage.entreprise.nom}}</li>
+	
+
+      {% for formation in stage.formations %}
+        <li class="list-group-item">Formations : {{formation.nomComplet}}</li>
+      {% endfor %}
+  
+</ul>
+</br>
+{% endblock %}
+
+{% block footer %} 
+
+<table class="table table-striped">
+  <thead class="thead-dark" >
+    <tr>
+      <th scope="col"><a href= "{{path('stage',{id:stage.id+1})}}">Acceeder au stage suivant</a> </th>
+      <th scope="col"><a href="/">Retour à l'acueil</a></th>
+    </tr>
+  </thead>
+  </table>
+
+{% endblock %}
