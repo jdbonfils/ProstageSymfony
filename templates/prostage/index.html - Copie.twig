@@ -10,7 +10,7 @@
    
       <th scope="col">Intitule</th>
       <th scope="col">Entreprise</th>
-      <th scope="col">Formation</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -18,11 +18,8 @@
     <tr>
 
       <td><a href="{{path('stage',{'id':stageCourant.id})}}">{{stageCourant.titre}}</td>
-      <td><a href="{{path('entreprise',{'id2':stageCourant.Entreprise.id})}}">{{stageCourant.Entreprise.nom}}</td>
-      {% for formation in stageCourant.formations %}
-        <td><a href="{{path('formation')}}">{{formation.nom}}</td>
-      {% endfor %}
-     
+      <td><a href="{{path('entreprise')}}">{{stageCourant.Entreprise.nom}}</td>
+      <td><a href="{{path('formation')}}">DUT Inofrmatique</td>
     </tr>
     {% endfor %}
   </tbody>

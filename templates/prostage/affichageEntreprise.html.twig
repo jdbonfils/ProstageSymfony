@@ -1,7 +1,22 @@
-{% extends 'base.html.twig' %}
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% extends 'proStageTemplate.html.twig' %}
+{% block title %}Hello!{% endblock %}
 
 {% block body %}
-<h1> Cette page affichera la liste des entreprises </h1>
+<h1>Voici la liste des stages proposé par :  {{entreprise.nom}}</h1>
+
+<table class="table table-striped">
+	<thead class="thead-dark" >
+    	<tr>
+   			<th scope="col">Intitule</th>
+		</tr>
+  	</thead>
+  	<tbody>
+	<ul class="list-group">
+		{% for stage in stagesE %}
+ 			<li class="list-group-item">Stage : {{stage.titre}}</li>
+		{% endfor %}
+	</ul>
+	</tbody>
+</table>
 
 {% endblock %}
