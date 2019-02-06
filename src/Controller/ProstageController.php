@@ -50,13 +50,19 @@ class ProstageController extends AbstractController
 	
 	
 	        /**
-     * @Route("/formation", name="formation")
+     * @Route("/formation/{idFormation}", name="formation")
      */
-    public function afficherFormation()
+    public function afficherFormation($idFormation)
     {
+
+        $repositoryRessources = $this->getDoctrine()->getRepository(stage::class) ;
+       // $repositoryFormation = $this->getDoctrine()->getRepository(formation::class) ;
+
+
+        $stageF = $repositoryRessources->findStageForFormation($idFormation) ;
+       //$formation = $repositoryFormation->findOneByNom($idFormation) ;
         return $this->render('prostage/affichageFormation.html.twig', [
-            'controller_name' => 'Cette page affichera la liste des formation de l \'iut',
-        ]);
+            'controller_name' => 'Cette page affichera la liste des formation de l \'iut','identifiant' => $idFormation , 'stageF' => $stageF ]);
     }
 	
 	

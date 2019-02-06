@@ -65,4 +65,23 @@ class StageRepository extends ServiceEntityRepository
 
     return $requete->execute() ;
     }
+
+
+
+
+        /**
+    *@return Stage[] Returns an array of Ressource objects
+    */
+    public function findStageForFormation ($idFormation)
+    {
+    $gestionnaireEntity = $this->getEntityManager();
+    $requete = $gestionnaireEntity->createQuery('SELECT s
+                                                FROM APP\Entity\Stage s
+                                                JOIN s.formations sf
+                                                WHERE sf.nom = :idFormation') ;
+
+    $requete->setParameter('idFormation', $idFormation);
+
+    return $requete->execute() ;
+    }
 }
