@@ -14,7 +14,7 @@
   	<tbody>
   	{% for stage in stagesE %}
 		<tr>	
- 			<td>Stage : {{stage.titre}}</td>
+ 			<td><a href="{{path('stage',{'id':stage.id})}}"> Stage : {{stage.titre}}</td>
 		</tr>
 	{% endfor %}
 

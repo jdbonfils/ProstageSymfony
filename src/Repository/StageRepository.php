@@ -59,7 +59,7 @@ class StageRepository extends ServiceEntityRepository
     $requete = $gestionnaireEntity->createQuery('SELECT s
                                                 FROM APP\Entity\Stage s
                                                 JOIN s.Entreprise se
-                                                WHERE se.id = :id2') ;
+                                                WHERE se.nom = :id2') ;
 
     $requete->setParameter('id2', $id2);
 

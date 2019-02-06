@@ -41,7 +41,7 @@ class ProstageController extends AbstractController
 
 
         $stagesE = $repositoryRessources->findStageForEntreprise($id2) ;
-        $entreprise = $repositoryEntreprise->find($id2) ;
+        $entreprise = $repositoryEntreprise->findOneByNom($id2) ;
 
         return $this->render('prostage/affichageEntreprise.html.twig', [
             'identifiant' => $id2 , 'stagesE' => $stagesE , 'entreprise' => $entreprise]);
