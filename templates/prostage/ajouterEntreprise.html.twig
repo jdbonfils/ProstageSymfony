@@ -1,0 +1,22 @@
+{% extends 'proStageTemplate.html.twig' %}
+
+{% block title %}Ajouter une Entreprise </title>{% endblock %}
+
+{% block body %}
+</br>
+<p class="font-weight-bold">Veuillez saisir les informations concernant l'entreprise</p>
+{{ form_start(vueFormulaire) }}
+
+
+{{ form_row(vueFormulaire.nom, {'attr':{'placeholder':"Ex : Safran"}})}}
+
+{{ form_row(vueFormulaire.activite, {'attr':{'placeholder':"Ex : Aeronautique"}})}}
+
+{{ form_row(vueFormulaire.adresse, {'attr':{'placeholder':"Ex : 3 rue des Potiers"}})}}
+
+{{ form_end(vueFormulaire) }}
+
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+{% endblock %}
