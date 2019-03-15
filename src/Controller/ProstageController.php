@@ -4,12 +4,17 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
 use App\Entity\Stage;
-
-
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response ;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Form\Extension\Core\Type\TextType ;
+use App\Form\EntrepriseType ;
+use App\Form\StageType ;
+use App\Form\FormationType ;
 
 //use Doctrine\ORM\EntityRepository;
 
@@ -79,35 +84,84 @@ class ProstageController extends AbstractController
 	
 	
 	/**
-     * @Route("/ajouterEntreprise", name="ajouterEntreprise")
+     * @Route("/admin/ajouterEntreprise", name="ajouterEntreprise")
      */
-    public function ajouterEntrepriseRequest( /*$request, ObjectManager $manager*/)
+    public function ajouterEntrepriseRequest(Request $request, ObjectManager $manager)
     {
         //Création d'une entreprise
         $entreprise = new Entreprise() ;
         //Création d'un objet formulaire
-        $formulaireEntreprise = $this -> createFormBuilder($entreprise)
-                                      -> add('nom',TextType::class , ['constraints' => new NotBlank()])
-                                      -> add('activite')
-                                      -> add('adresse', ['constraints' => new NotBlank()])
-                                      -> getForm();
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 
         $vueFormulaire = $formulaireEntreprise->createView() ;
 
 
-      /*  $formulaireEntreprise->handleRequest($request);
+        $formulaireEntreprise->handleRequest($request);
          if ($formulaireEntreprise->isSubmitted() )
          {
-            // Mémoriser la date d'ajout de la ressources
-            $entreprise->setDateAjout(new \dateTime());
+          
             // Enregistrer la ressource en base de donnéelse
             $manager->persist($entreprise);
             $manager->flush();
             // Rediriger l'utilisateur vers la page d'accueil
-            return $this->redirectToRoute('openclassdut_accueil');
-         }*/
+            return $this->redirectToRoute('prostage-acceuil');
+         }
 
-        return $this->render('prostage/ajouterEntreprise.html.twig',['vueFormulaire'=> $vueFormulaire]);
+        return $this->render('prostage/ajouterEntreprise.html.twig',['vueFormulaire'=> $vueFormulaire, 'action'=>"ajouter"]);
+        
+    }
+
+     /**
+     * @Route("/entreprise/admin/modifier/{id}", name="modifEntreprise")
+     */
+    public function modifierEntreprise(Request $request, ObjectManager $manager, Entreprise $entreprise)
+    {
+        // Création du formulaire permettant de saisir une ressource
+        $formulaireEntreprise = $this -> createFormBuilder($entreprise)
+                                      -> add('nom',TextType::class , ['constraints' => new NotBlank()])
+                                      -> add('activite')
+                                      -> add('adresse')
+                                      -> getForm();
+        
+        $formulaireEntreprise->handleRequest($request);
+
+         if ($formulaireEntreprise->isSubmitted() )
+         {
+            // Enregistrer la ressource en base de donnéelse
+            $manager->persist($entreprise);
+            $manager->flush();
+            // Rediriger l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('prostage-acceuil');
+         }
+        // Afficher la page présentant le formulaire d'ajout d'une ressource
+        return $this->render('prostage/ajouterEntreprise.html.twig',['vueFormulaire' => $formulaireEntreprise->createView(), 'action'=>"modifier"]);
+    }
+
+    /**
+     * @Route("/AjouterStage", name="ajouterStage")
+     */
+    public function ajouterStageRequest(Request $request, ObjectManager $manager)
+    {
+        //Création d'une entreprise
+        $stage = new Stage() ;
+        //Création d'un objet formulaire
+        $formulaireStage = $this->createForm(StageType::class, $stage);
+
+        $vueFormulaire = $formulaireStage->createView() ;
+
+
+        $formulaireStage->handleRequest($request);
+         if ($formulaireStage->isSubmitted() )
+         {
+          
+            // Enregistrer la ressource en base de donnéelse
+            $manager->persist($entreprise);
+            $manager->flush();
+            // Rediriger l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('prostage-acceuil');
+         }
+
+        return $this->render('prostage/AjouterStage.html.twig',['vueFormulaire'=> $vueFormulaire]);
         
     }
 	

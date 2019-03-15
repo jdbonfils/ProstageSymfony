@@ -1,0 +1,43 @@
+{% extends 'proStageTemplate.html.twig' %}
+
+{% block title %}
+ 
+{% endblock %}
+
+{% block body %}
+</br>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-1">
+		</div>
+		<div class="col-md-10">
+		<p class="font-weight-bold">Veuillez saisir les informations concernant le stage</p>
+{{ form_start(vueFormulaire) }}
+
+
+{{ form_row(vueFormulaire.titre, {'attr':{'placeholder':"Ex : Developpement d'un sharepoint"}})}}
+
+{{ form_row(vueFormulaire.description, {'attr':{'placeholder':"Dans ce stage vous devrez développer ....."}})}}
+
+{{ form_row(vueFormulaire.contact, {'attr':{'placeholder':"+33 6 83 98 06 34"}})}}
+
+{{ form_row(vueFormulaire.Entreprise , {'attr':{'placeholder':"Ex : 3 rue des Potiers"}})}}
+<button type="submit" class="btn btn-dark">Enregistrer</button>
+
+{{ form_end(vueFormulaire) }}
+
+
+</br>
+          <button type="button" class="btn btn-default btn-sm">
+         <span class="glyphicon glyphicon-arrow-left"><a class="nav-link" href="{{path('prostage-acceuil')}}"></span> Back
+        </button>
+		</div>
+		<div class="col-md-1">
+		</div>
+	</div>
+</div>
+
+
+
+
+{% endblock %}
