@@ -1,3 +1,0 @@
-prostage-acceuil:
-    path: /
-    controller: App\Controller\ProstageController::index
